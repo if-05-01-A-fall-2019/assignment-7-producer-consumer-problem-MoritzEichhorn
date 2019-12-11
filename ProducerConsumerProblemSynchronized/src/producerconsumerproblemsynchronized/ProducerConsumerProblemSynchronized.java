@@ -18,7 +18,7 @@ public class ProducerConsumerProblemSynchronized {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         ExecutorService executerService = Executors.newFixedThreadPool(2);
+        ExecutorService executerService = Executors.newFixedThreadPool(2);
         ProducerConsumerSynchronized p = new ProducerConsumerSynchronized();
         executerService.execute(new Runnable() {
             @Override
