@@ -18,7 +18,7 @@ public class ProducerConsumerSemaphore {
     List<Integer> buffer = new LinkedList<>();
     static final int N = 5;
     Random random = new Random();
-    Semaphore semaphore = new Semaphore(0);
+    Semaphore semaProd = new Semaphore(0);
     Semaphore semCon = new Semaphore(0);
     
     void produce() throws InterruptedException {
@@ -28,7 +28,7 @@ public class ProducerConsumerSemaphore {
             Thread.sleep(100);
             if(buffer.size() == N)
             {
-                semaphore.acquire();
+                semaProd.acquire();
             }
             
             buffer.add(item);
@@ -52,9 +52,9 @@ public class ProducerConsumerSemaphore {
             System.out.println("Removed Item, Count: " + buffer.size());
             Thread.sleep(110);
             
-            if(buffer.size() == N - 1 && semaphore.hasQueuedThreads())
+            if(buffer.size() == N - 1 && semaProd.hasQueuedThreads())
             {
-                semaphore.release();
+                semaProd.release();
             }
             
         }
